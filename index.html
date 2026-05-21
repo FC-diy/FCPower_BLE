@@ -105,7 +105,7 @@
                 <div class="calib-item">
                     <div class="calib-header">
                         <label>校准输入电压</label>
-                        <div class="help-tip" data-tip="用万用表测输入端实际电压，填入后点校准">
+                        <div class="help-tip" data-tip="用万用表测输入端实际电压，填入后点校准，一共5位不带小数点。比如 19.99V 请填入 19999">
                             <ion-icon name="help-circle-outline"></ion-icon>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                 <div class="calib-item">
                     <div class="calib-header">
                         <label>校准输出电压</label>
-                        <div class="help-tip" data-tip="测输出端实际电压，填入值以修正显示误差">
+                        <div class="help-tip" data-tip="用万用表测输出端实际电压，填入后点校准，一共5位不带小数点。比如 19.99V 请填入 19999。5V请填入5000，建议在15V校准">
                             <ion-icon name="help-circle-outline"></ion-icon>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                 <div class="calib-item">
                     <div class="calib-header">
                         <label>校准输出电流</label>
-                        <div class="help-tip" data-tip="串联万用表测电流，填入值以修正显示误差">
+                        <div class="help-tip" data-tip="串联万用表测电流，填入值以修正显示误差，一共4位不带小数点。比如 0.1A 请填入100，1A填入1000。建议在3A校准">
                             <ion-icon name="help-circle-outline"></ion-icon>
                         </div>
                     </div>
@@ -141,12 +141,12 @@
                 <div class="calib-item">
                     <div class="calib-header">
                         <label>校准恒流值</label>
-                        <div class="help-tip" data-tip="设定恒流值后，用万用表测量实际电流，填入值以校准">
+                        <div class="help-tip" data-tip="当恒流值不准的时候，请在恒流的是点击校准即可">
                             <ion-icon name="help-circle-outline"></ion-icon>
                         </div>
                     </div>
                     <div class="calib-input-group">
-                        <input type="number" placeholder="测量值" class="num-input" id="cal-cc-i" disabled>
+                        <input type="number" placeholder="不用填" class="num-input" id="cal-cc-i" disabled>
                         <button class="btn btn-cal" id="btn-cal-cc-i">校准</button>
                     </div>
                 </div>
@@ -162,9 +162,6 @@
                     <option value="led_allow=0">灯光关</option>
                     <option value="beep_allow=1">声音开</option>
                     <option value="beep_allow=0">声音关</option>
-                    <option value="BLE_READ=1">获取参数</option>
-                    <option value="POWER_OPEN=1">打开输出</option>
-                    <option value="POWER_OPEN=0">关闭输出</option>
                 </select>
                 <button class="btn btn-send" id="send-command-btn">发送</button>
             </div>
