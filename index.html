@@ -166,8 +166,21 @@
                 <button class="btn btn-send" id="send-command-btn">发送</button>
             </div>
         </section>
+
+        <!-- 新增：固件升级模块 -->
+        <section class="firmware-module">
+            <div class="firmware-container">
+<select class="firmware-select" id="firmware-select">
+                    <option value="">请选择固件</option>
+                </select>
+                <button class="btn btn-upgrade" id="upgrade-firmware-btn">升级固件</button>
+                <button class="btn btn-cancel" id="cancel-upgrade-btn" style="display: none;">取消升级</button>
+            </div>
+            <div class="upgrade-progress" id="upgrade-progress"></div>
+        </section>
     </div>
 
     <script src="script.js"></script>
+    <script src="firmware-upgrade.js"></script>
 </body>
 </html>

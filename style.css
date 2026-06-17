@@ -213,3 +213,80 @@ input[type="range"] { width: 100%; accent-color: var(--accent-cyan); cursor: poi
         width: 100%;
     }
 }
+
+/* 固件升级模块 */
+.firmware-module {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.firmware-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.firmware-select {
+    flex: 1;
+    max-width: 300px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--accent-cyan);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.firmware-select:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+}
+
+.firmware-select option {
+    background: #000;
+    color: var(--accent-cyan);
+}
+
+.btn-upgrade {
+    background: var(--accent-green);
+    color: #000;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-upgrade:hover {
+    opacity: 0.9;
+}
+
+.btn-upgrade:active {
+    transform: translateY(1px);
+}
+
+.upgrade-progress {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--accent-cyan);
+    font-size: 14px;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .firmware-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .firmware-select,
+    .btn-upgrade {
+        width: 100%;
+    }
+}

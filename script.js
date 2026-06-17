@@ -424,6 +424,12 @@ class BLEManager {
 
                 this.connected = true;
                 this.updateConnectionStatus(true);
+                
+                // 将蓝牙管理器传递给固件升级模块
+                if (typeof firmwareUpgrade !== 'undefined') {
+                    firmwareUpgrade.setBluetoothManager(this);
+                }
+                
                 alert('连接成功！');
                 return; // 连接成功，退出循环
             } catch (error) {
@@ -481,6 +487,20 @@ class BLEManager {
         const decoder = new TextDecoder('utf-8');
         const text = decoder.decode(value);
         // console.log('收到数据片段:', text);
+        
+        // 检查是否是固件升级请求
+        const binMatch = /AT\+BIN=(\d+)/.exec(text);
+        if (binMatch) {
+            const chunkIndex = parseInt(binMatch[1]);
+            console.log('收到数据块请求:', chunkIndex);
+            
+            // 调用固件升级模块处理请求
+            if (typeof firmwareUpgrade !== 'undefined') {
+                firmwareUpgrade.handleBinRequest(chunkIndex);
+            }
+            
+            return; // 不继续处理其他数据
+        }
         
         // 将新数据添加到缓冲区
         this.dataBuffer += text;
@@ -844,7 +864,15 @@ class BLEManager {
         try {
             const encoder = new TextEncoder();
             const value = encoder.encode(data);
-            await this.characteristic.writeValue(value);
+            
+            // 尝试使用 writeValueWithResponse，如果失败则使用 writeValue
+            try {
+                await this.characteristic.writeValueWithResponse(value);
+            } catch (e) {
+                // 如果 writeValueWithResponse 失败，尝试使用 writeValue
+                await this.characteristic.writeValue(value);
+            }
+            
             // console.log('发送数据:', data);
             return true;
         } catch (error) {
