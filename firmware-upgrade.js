@@ -21,7 +21,7 @@ class FirmwareUpgrade {
         // 添加新固件时，只需在这里添加对应条目，下拉框选项会自动生成
         this.firmwareList = {
             'FCPower-V2.4.bin': { name: 'FCPower V2.4', fileName: 'FCPower-V2.4.bin' },
-            'FCPower-V2.5.bin': { name: 'FCPower V2.5', fileName: 'FCPower-V2.5.bin' },
+            
            
         };
     }
